@@ -1,0 +1,25 @@
+%{
+lowest_freq = 0;
+high_freq = 100000;
+f_fast = high_freq;
+N = 1001;
+dt = high_freq/N;
+f_half = lowest_freq:dt:high_freq; 
+T = (N-1)/(2*f_fast);
+n = (N - 1)/(2 * T);
+
+t = (0:N-1)*T;
+
+%Part 2
+spec = f_half.*0;
+find_first_place = find(f_half >= 20 & f_half <= 20000);
+spec(find_first_place) = 15;
+
+[a, X, t, x] = create_noise_from_spectrum(f_half,spec);
+%}
+lowest_freq=0;
+highest_freq=100*1000;
+N = 1000001;
+T=1/Fs;
+
+n=(N+1)/2;
